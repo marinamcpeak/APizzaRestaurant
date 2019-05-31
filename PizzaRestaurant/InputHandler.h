@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Pizza.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface InputHandler : NSObject
 
-+(NSString *)formatUserInput;
++(NSString *) formatUserInput;
 
 @end
 

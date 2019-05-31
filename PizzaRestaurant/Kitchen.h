@@ -2,15 +2,30 @@
 //  Kitchen.h
 //  PizzaRestaurant
 //
-//  Created by Steven Masuch on 2014-07-19.
-//  Copyright (c) 2014 Lighthouse Labs. All rights reserved.
+//  Created by Marina Mona June McPeak on 2019-05-30.
+//  Copyright © 2019 Lighthouse Labs. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "Pizza.h"
 
+@class Kitchen;
+
+@protocol KitchenDelegate <NSObject>
+
+-(BOOL)kitchen:(Kitchen *)kitchen shouldMakePizzaOfSize:(PizzaSize)size andToppings:(NSArray *)toppings;
+-(BOOL)kitchenShouldUpgradeOrder:(Kitchen *)kitchen;
+
+@end
+
 @interface Kitchen : NSObject
 
+@property int pizzaSize;
 
+- (Pizza *) makePizzaWithSize : (NSString *)pizzaInfo;
+
++ (Pizza *) largePepperoni;
+
++ (Pizza *) meatLoversWithSize : (PizzaSize)size;
 
 @end
