@@ -13,12 +13,18 @@
 
 @protocol KitchenDelegate <NSObject>
 
--(BOOL)kitchen:(Kitchen *)kitchen shouldMakePizzaOfSize:(PizzaSize)size andToppings:(NSArray *)toppings;
--(BOOL)kitchenShouldUpgradeOrder:(Kitchen *)kitchen;
+- (BOOL) kitchen:(Kitchen *)kitchen shouldMakePizzaOfSize:(PizzaSize)size andToppings:(NSArray *)toppings;
+- (BOOL) kitchenShouldUpgradeOrder:(Kitchen *)kitchen;
+
+//@optional
+
+- (void) kitchenDidMakePizza:(Pizza *)pizza;
 
 @end
 
 @interface Kitchen : NSObject
+
+@property id <KitchenDelegate> delegate;
 
 @property int pizzaSize;
 

@@ -7,19 +7,20 @@
 //
 
 #import "Kitchen.h"
-#import "Pizza.h"
+@class Pizza;
 
 @implementation Kitchen
 
 - (Pizza *)makePizzaWithSize:(NSString *)pizzaInfo {
     
-    
     NSMutableArray *commandWords = [[pizzaInfo componentsSeparatedByString:@" "]mutableCopy];
     
     NSString *theSize = commandWords[0];
+    
     if ([theSize isEqualToString:@"pepperoni"]) {
-        NSLog(@"Test");
+        
         Pizza *pizza = [Kitchen largePepperoni];
+        
         return pizza;
         
     }
@@ -51,31 +52,63 @@
             return pizza;
         }
     
-    
     }
     
-    Pizza *pizza = [[Pizza alloc] initWithSize:_pizzaSize andToppings:[commandWords subarrayWithRange:NSMakeRange(1, commandWords.count - 1)]];
+    NSArray *toppings = [commandWords subarrayWithRange:NSMakeRange(1, commandWords.count - 1)];
     
-    return pizza;
+    if ([self.delegate kitchen:self shouldMakePizzaOfSize:_pizzaSize andToppings:toppings]) {
+        
+        if ([self.delegate kitchenShouldUpgradeOrder:self]) {
+            
+            _pizzaSize = large;
+            
+        }
+        
+        Pizza *pizza = [[Pizza alloc] initWithSize:_pizzaSize andToppings:toppings];
+        
+        if( [self.delegate respondsToSelector:@selector(kitchenDidMakePizza:)] ) {
+            
+            [self.delegate kitchenDidMakePizza:pizza];
+            
+        }
+        
+        return pizza;
+        
+    } else {
+        
+        NSLog(@"No pizza could be delivered.");
+        
+        return nil;
+    }
+
 }
 
 + (Pizza *)largePepperoni {
     
-    Pizza *pizza = [[Pizza alloc] initWithSize:2 andToppings:@[@"pepperoni", @"cheese", @"tomatoSauce"]];
+    Pizza *pizza = [[Pizza alloc] initWithSize:2 andToppings:@[@"pepperoni",
+                                                               @"cheese",
+                                                               @"tomato sauce"]];
     return pizza;
     
 }
 
 + (Pizza *)meatLoversWithSize:(PizzaSize)size {
     
-    Pizza *pizza = [[Pizza alloc] initWithSize:size andToppings:@[@"pepperoni", @"ham", @"sausage", @"cheese", @"tomatoSauce"]];
+    Pizza *pizza = [[Pizza alloc] initWithSize:size andToppings:@[@"pepperoni",
+                                                                  @"ham",
+                                                                  @"sausage",
+                                                                  @"cheese",
+                                                                  @"tomato sauce"]];
     return pizza;
     
 }
 
 + (Pizza *)hawaiianWithSize:(PizzaSize)size {
     
-    Pizza *pizza = [[Pizza alloc] initWithSize:size andToppings:@[@"pineapple", @"ham", @"cheese", @"tomatoSauce"]];
+    Pizza *pizza = [[Pizza alloc] initWithSize:size andToppings:@[@"pineapple",
+                                                                  @"ham",
+                                                                  @"cheese",
+                                                                  @"tomato sauce"]];
     return pizza;
     
 }
