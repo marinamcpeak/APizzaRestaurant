@@ -56,6 +56,12 @@
     
     NSArray *toppings = [commandWords subarrayWithRange:NSMakeRange(1, commandWords.count - 1)];
     
+    if (self.delegate == NULL) {
+        
+        return [[Pizza alloc] initWithSize:_pizzaSize andToppings:toppings];
+        
+    }
+    
     if ([self.delegate kitchen:self shouldMakePizzaOfSize:_pizzaSize andToppings:toppings]) {
         
         if ([self.delegate kitchenShouldUpgradeOrder:self]) {

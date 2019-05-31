@@ -12,6 +12,8 @@
 		6001EC90197B502F00F97011 /* Kitchen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6001EC8F197B502F00F97011 /* Kitchen.m */; };
 		9C5D6D6C22A068F70005A7B9 /* Pizza.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D6D6B22A068F70005A7B9 /* Pizza.m */; };
 		9C5D6D6F22A074ED0005A7B9 /* InputHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D6D6E22A074ED0005A7B9 /* InputHandler.m */; };
+		9C5D6D7522A1D4E80005A7B9 /* AngryKitchenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D6D7422A1D4E80005A7B9 /* AngryKitchenManager.m */; };
+		9C5D6D7822A1D4F70005A7B9 /* CheeryKitchenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D6D7722A1D4F70005A7B9 /* CheeryKitchenManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +39,10 @@
 		9C5D6D6B22A068F70005A7B9 /* Pizza.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pizza.m; sourceTree = "<group>"; };
 		9C5D6D6D22A074ED0005A7B9 /* InputHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputHandler.h; sourceTree = "<group>"; };
 		9C5D6D6E22A074ED0005A7B9 /* InputHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputHandler.m; sourceTree = "<group>"; };
+		9C5D6D7322A1D4E80005A7B9 /* AngryKitchenManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AngryKitchenManager.h; sourceTree = "<group>"; };
+		9C5D6D7422A1D4E80005A7B9 /* AngryKitchenManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AngryKitchenManager.m; sourceTree = "<group>"; };
+		9C5D6D7622A1D4F70005A7B9 /* CheeryKitchenManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheeryKitchenManager.h; sourceTree = "<group>"; };
+		9C5D6D7722A1D4F70005A7B9 /* CheeryKitchenManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheeryKitchenManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				6001EC83197B4EC300F97011 /* main.m */,
+				9C5D6D7622A1D4F70005A7B9 /* CheeryKitchenManager.h */,
+				9C5D6D7722A1D4F70005A7B9 /* CheeryKitchenManager.m */,
+				9C5D6D7322A1D4E80005A7B9 /* AngryKitchenManager.h */,
+				9C5D6D7422A1D4E80005A7B9 /* AngryKitchenManager.m */,
 				9C5D6D6D22A074ED0005A7B9 /* InputHandler.h */,
 				9C5D6D6E22A074ED0005A7B9 /* InputHandler.m */,
 				9C5D6D6A22A068F70005A7B9 /* Pizza.h */,
@@ -153,7 +163,9 @@
 			files = (
 				9C5D6D6C22A068F70005A7B9 /* Pizza.m in Sources */,
 				6001EC90197B502F00F97011 /* Kitchen.m in Sources */,
+				9C5D6D7822A1D4F70005A7B9 /* CheeryKitchenManager.m in Sources */,
 				6001EC84197B4EC300F97011 /* main.m in Sources */,
+				9C5D6D7522A1D4E80005A7B9 /* AngryKitchenManager.m in Sources */,
 				9C5D6D6F22A074ED0005A7B9 /* InputHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

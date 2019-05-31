@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Kitchen.h"
+#import "AngryKitchenManager.h"
+#import "CheeryKitchenManager.h"
 #import "InputHandler.h"
 
 int main(int argc, const char * argv[])
@@ -17,7 +19,11 @@ int main(int argc, const char * argv[])
         
         NSLog(@"Please enter the size of pizza you'd like, as well as the desired toppings (separated by spaces): ");
         
-        Kitchen *restaurantKitchen = [[Kitchen alloc]init];
+        Kitchen *restaurantKitchen = [[Kitchen alloc] init];
+        AngryKitchenManager *angryKitchenManager = [[AngryKitchenManager alloc] init];
+        CheeryKitchenManager *cheeryKitchenManager = [[CheeryKitchenManager alloc] init];
+        
+        restaurantKitchen.delegate = NULL;
         
         while (TRUE) {
             
