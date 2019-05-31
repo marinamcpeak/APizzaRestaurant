@@ -17,19 +17,55 @@ int main(int argc, const char * argv[])
     
     @autoreleasepool {
         
-        NSLog(@"Please enter the size of pizza you'd like, as well as the desired toppings (separated by spaces): ");
-        
         Kitchen *restaurantKitchen = [[Kitchen alloc] init];
         AngryKitchenManager *angryKitchenManager = [[AngryKitchenManager alloc] init];
         CheeryKitchenManager *cheeryKitchenManager = [[CheeryKitchenManager alloc] init];
         
-        restaurantKitchen.delegate = NULL;
+        NSLog(@"Please select your manager of choice.\nEnter 1 for Angry Mangager, 2 for Cheery Manager, or 3 to get the pizza yourself.");
+
+        while (YES) {
+            
+            NSString *formattedUserInputManagerString = [InputHandler formatUserInput];
+            
+            if ([formattedUserInputManagerString isEqualToString:@"1"]) {
+                
+                restaurantKitchen.delegate = angryKitchenManager;
+                break;
+                
+            } else if ([formattedUserInputManagerString isEqualToString:@"2"]) {
+                
+                restaurantKitchen.delegate = cheeryKitchenManager;
+                break;
+                
+            } else if ([formattedUserInputManagerString isEqualToString:@"3"]) {
+                
+                restaurantKitchen.delegate = NULL;
+                break;
+                
+            } else {
+                
+                NSLog(@"Oops, sorry, %@ not a valid input. Please try again.", formattedUserInputManagerString);
+                
+            }
+        }
         
-        while (TRUE) {
+        NSLog(@"Please enter the size of pizza you'd like, as well as the desired toppings (separated by spaces): ");
+        
+        while (YES) {
             
             NSString *formattedUserInputString = [InputHandler formatUserInput];
+            
             Pizza *thePizza = [restaurantKitchen makePizzaWithSize:formattedUserInputString];
+            
+            if (thePizza == NULL) {
+                
+                continue;
+                
+            } else {
+                
             NSLog(@"%@",thePizza);
+                
+            }
             
         }
         

@@ -41,11 +41,13 @@
             _pizzaSize = 2;
             
         }
+        
         if ([commandWords[1] isEqualToString:@"meatlovers"]) {
             
             Pizza *pizza = [Kitchen meatLoversWithSize:_pizzaSize];
             return pizza;
         }
+        
         if ([commandWords[1] isEqualToString:@"hawaiian"]) {
             
             Pizza *pizza = [Kitchen hawaiianWithSize:_pizzaSize];
@@ -82,7 +84,7 @@
         
     } else {
         
-        NSLog(@"No pizza could be delivered.");
+        NSLog(@"No pizza could be delivered. Please try a different order :)");
         
         return nil;
     }
