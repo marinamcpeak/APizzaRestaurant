@@ -11,6 +11,7 @@
 #import "AngryKitchenManager.h"
 #import "CheeryKitchenManager.h"
 #import "InputHandler.h"
+#import "DeliveryService.h"
 
 int main(int argc, const char * argv[])
 {
@@ -20,6 +21,8 @@ int main(int argc, const char * argv[])
         Kitchen *restaurantKitchen = [[Kitchen alloc] init];
         AngryKitchenManager *angryKitchenManager = [[AngryKitchenManager alloc] init];
         CheeryKitchenManager *cheeryKitchenManager = [[CheeryKitchenManager alloc] init];
+        DeliveryService *deliveryService = [[DeliveryService alloc] init];
+        
         
         NSLog(@"Please select your manager of choice.\nEnter 1 for Angry Mangager, 2 for Cheery Manager, or 3 to get the pizza yourself.");
 
@@ -35,6 +38,7 @@ int main(int argc, const char * argv[])
             } else if ([formattedUserInputManagerString isEqualToString:@"2"]) {
                 
                 restaurantKitchen.delegate = cheeryKitchenManager;
+                cheeryKitchenManager.deliveryService = deliveryService;
                 break;
                 
             } else if ([formattedUserInputManagerString isEqualToString:@"3"]) {
@@ -48,25 +52,31 @@ int main(int argc, const char * argv[])
                 
             }
         }
-        
-        NSLog(@"Please enter the size of pizza you'd like, as well as the desired toppings (separated by spaces): ");
+    
         
         while (YES) {
             
+            NSLog(@"Please enter the size of pizza you'd like, as well as the desired toppings (separated by spaces). If you would like to see your history, type history:");
+            
             NSString *formattedUserInputString = [InputHandler formatUserInput];
             
-            Pizza *thePizza = [restaurantKitchen makePizzaWithSize:formattedUserInputString];
-            
-            if (thePizza == NULL) {
-                
-                continue;
-                
+            if([formattedUserInputString isEqualToString: @"history"]) {
+                [deliveryService printHistory];
             } else {
-                
-            NSLog(@"%@",thePizza);
-                
-            }
             
+                Pizza *thePizza = [restaurantKitchen makePizzaWithSize:formattedUserInputString];
+                
+                if (thePizza == NULL) {
+                    
+                    continue;
+                    
+                } else {
+                
+                
+                NSLog(@"%@",thePizza);
+            
+                }
+            }
         }
         
     }

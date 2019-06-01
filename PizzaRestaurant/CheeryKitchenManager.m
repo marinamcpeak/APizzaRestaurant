@@ -7,6 +7,7 @@
 //
 
 #import "CheeryKitchenManager.h"
+#import "DeliveryService.h"
 
 @implementation CheeryKitchenManager
 
@@ -22,6 +23,10 @@
     
     return YES;
     
+}
+
+- (void) kitchenDidMakePizza:(Pizza *)pizza {
+    [self.deliveryService deliverPizza:pizza];
 }
 
 @end
